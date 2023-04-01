@@ -1,0 +1,56 @@
+
+.nav {
+    background-color: #3C6255;
+    left: 0px;
+    right: 0px;
+    height: 12vh;
+}
+
+.one {
+    font-family:'Cabin';
+    font-weight: bolder;
+    position: absolute;
+    color: #EAE7B1;
+    left: 50px;
+    margin-top: 12px;
+    font-size: xx-large;
+}
+
+.two {
+    font-family:'Cabin';
+    font-weight: bolder;
+    position: absolute;
+    color: #EAE7B1;
+    font-size: xx-large;
+    margin-top: 12px;
+    right: 36px;
+}
+/* Rectangle 2 */
+
+/* position: absolute;
+width: 1920px;
+height: 951px;
+left: 0px;
+top: 129px;
+
+background: #DEFAD4; */
+.home_back {
+    text-align: center;
+    font-family: 'Quattrocento';
+    background-color: #DEFAD4;
+    height: 88vh;
+}
+
+.home_back > h1 {
+    font-family: "Cabin";
+}
+
+.second_page {
+    height: 100vh;
+    background-color: #A6BB8D;
+}
+
+.home_back > img {
+    width: 200px;
+    margin-top: 80px;
+}
