@@ -1,3 +1,5 @@
+import{ BrowserRouter, Routes, Route, Link} from "react-router-dom"
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -12,7 +14,7 @@ function App() {
     <div className='maindiv'>
       <Navbar />
       <Home />
-      <Crop />
+      {/* <Crop /> */}
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

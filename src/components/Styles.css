@@ -25,6 +25,24 @@
     margin-top: 12px;
     right: 36px;
 }
+
+.hometocrop_button {
+    border: 5px solid #3C6255;
+    margin-bottom: 50px;
+    font-family: 'Cabin';
+    padding: 1px 20px 1px 20px;
+    transition-duration: 0.4s;
+}
+
+.hometocrop_button:hover {
+background-color: #A6BB8D;
+border: 5px solid #3C6255;
+}
+
+.hometocrop_button > h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 /* Rectangle 2 */
 
 /* position: absolute;
@@ -39,6 +57,7 @@ background: #DEFAD4; */
     font-family: 'Quattrocento';
     background-color: #DEFAD4;
     height: 88vh;
+    
 }
 
 .home_back > h1 {
