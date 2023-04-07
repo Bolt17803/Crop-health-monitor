@@ -7,7 +7,8 @@ export default function Crop(){
 	const rcImageRef = useRef();
 	const canvasRef = useRef();
 	const [image, setImage] = useState(null);
-
+	const [croppedImage, setCroppedImage] = useState(null);
+	
 	const [crop, setCrop] = useState({ aspect: 9/16 });
 	const [completedCrop, setCompletedCrop] = useState(null);
 
@@ -38,45 +39,62 @@ export default function Crop(){
 	};
 
 	useEffect(() =>{
-	// 	if(!completedCrop || !rcImageRef){
+		if(completedCrop && rcImageRef){
+			const rc_image = rcImageRef.current;
+			const canvas = canvasRef.current;
+			console.log("canvas: >>,canvas")
+			const crop = completedCrop;
+
+			const scaleX = rc_image.naturalWidth/ rc_image.width;
+			const scaleY = rc_image.naturalHeight/ rc_image.height;
+
+			const pixelRatio = window.devicePixelRatio;
+			const dImageWidth = crop.width*scaleX;
+			const dImageHeight = crop.height*scaleY;
+
+			canvas.width = dImageWidth*pixelRatio;
+			canvas.height = dImageHeight*pixelRatio;
+
+			const ctx = canvas.getContext("2d");
+			ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
+			ctx.imageSmoothingquality = "large";
+			ctx.imageSmoothingEnabled = true;
 			
-	// 	}
-	// 	else{
+			ctx.drawImage(
+				rc_image,
+				crop.x*scaleX,
+				crop.y*scaleY,
+				dImageWidth,
+				dImageHeight,
+				0,
+				0,
+				dImageWidth,
+				dImageHeight
+			);
+			canvas.toBlob(setCroppedImage)
+			
+		}
+	},[completedCrop])
 
-	// 	const rc_image = rcImageRef.current;
-	// 	const canvas = canvasRef.current;
-	// 	console.log("canvas: >>,canvas")
-	// 	const crop = completedCrop;
+	const handleSubmit = (e) => {
+		const formData = new FormData();
+		formData.append(
+			"file",
+			croppedImage,
+			"testpic.png"
+		);
 
-	// 	const scaleX = rc_image.naturalWidth/ rc_image.width;
-	// 	const scaleY = rc_image.naturalHeight/ rc_image.height;
+		const requestOptions={
+			method: 'POST',
+			body: formData
+		};
 
-	// 	const pixelRatio = window.devicePixelRatio;
-	// 	const dImageWidth = crop.width*scaleX;
-	// 	const dImageHeight = crop.height*scaleY;
-
-	// 	canvas.width = dImageWidth*pixelRatio;
-	// 	canvas.height = dImageHeight*pixelRatio;
-
-	// 	const ctx = canvas.getContext("2d");
-	// 	ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
-	// 	ctx.imageSmoothingquality = "large";
-	// 	ctx.imageSmoothingEnabled = true;
-		
-	// 	ctx.drawImage(
-	// 		rc_image,
-	// 		crop.x*scaleX,
-	// 		crop.y*scaleY,
-	// 		dImageWidth,
-	// 		dImageHeight,
-	// 		0,
-	// 		0,
-	// 		dImageWidth,
-	// 		dImageHeight
-	// 	);
-		
-	// }
-},[completedCrop])
+		fetch("http://127.0.0.1:8000/upload/", requestOptions)
+		.then(response => console.log(response.json()))
+		.then(function(response){
+			console.log(response)
+		})
+	}
 
 	const downloadImage = () => {
 		if(!completedCrop || !canvasRef.current){
@@ -105,12 +123,13 @@ export default function Crop(){
 									<img src={image} onLoad={handleOnLoad} />
 								</ReactCrop>)}
 					</div>
+					<canvas ref={canvasRef}></canvas>
 				</div>
 				<div className="buttons-panel">
 					<input className='image--input' type='file' accept='image/*' ref={imageRef} onChange={handleImageChanged}/>
 					<button className='btn--img' type='button' onClick={()=>imageRef.current.click()}>Upload Image</button>
 					<button className='btn--cancel' type='button' onClick={clear}>Cancel Operation</button>
-					<button className='btn--crop' type='button' onClick={clear}>Crop Image</button>
+					<button className='btn--crop' type='button' onClick={handleSubmit}>Submit Image</button>
 					<button className='btn--revert' type='button' onClick={clear}>Revert back to original</button>
 					{/* <button className='btn--download' type='button' disabled={!completedCrop?.width || !completedCrop.height} onClick={downloadImage}>Download</button> */}
 				</div>

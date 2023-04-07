@@ -60,7 +60,9 @@ nav > ul > li{
 .home_back {
     text-align: center;
     font-family: 'Quattrocento';
-    background-color: white;
+    
+background: rgb(207,245,231);
+background: linear-gradient(0deg, rgba(207,245,231,1) 0%, rgba(255,255,255,1) 100%);
     height:100vh;  
 }
 .home--image{
