@@ -5,8 +5,9 @@ export default function About(){
         <div className="page--about" id="about">
             <div className="page--about--container">
                 <h1>Made By:</h1>
-                <h2>Gaddey Hemanth Chowdary &</h2>
-                <h2>Anumula Chaitanya Sai</h2>
+                <h2>Gaddey Hemanth Chowdary & Anumula Chaitanya Sai</h2>
+                {/* <h2>Anumula Chaitanya Sai</h2> */}
+                <p>@ idhi maa adda nuvveedraa naa ***</p>
             </div>
         </div>
     )

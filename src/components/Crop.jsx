@@ -38,44 +38,45 @@ export default function Crop(){
 	};
 
 	useEffect(() =>{
-		if(!completedCrop || !rcImageRef){
+	// 	if(!completedCrop || !rcImageRef){
 			
-		}
-		else{
+	// 	}
+	// 	else{
 
-		const rc_image = rcImageRef.current;
-		const canvas = canvasRef.current;
-		console.log("canvas: >>,canvas")
-		const crop = completedCrop;
+	// 	const rc_image = rcImageRef.current;
+	// 	const canvas = canvasRef.current;
+	// 	console.log("canvas: >>,canvas")
+	// 	const crop = completedCrop;
 
-		const scaleX = rc_image.naturalWidth/ rc_image.width;
-		const scaleY = rc_image.naturalHeight/ rc_image.height;
+	// 	const scaleX = rc_image.naturalWidth/ rc_image.width;
+	// 	const scaleY = rc_image.naturalHeight/ rc_image.height;
 
-		const pixelRatio = window.devicePixelRatio;
-		const dImageWidth = crop.width*scaleX;
-		const dImageHeight = crop.height*scaleY;
+	// 	const pixelRatio = window.devicePixelRatio;
+	// 	const dImageWidth = crop.width*scaleX;
+	// 	const dImageHeight = crop.height*scaleY;
 
-		canvas.width = dImageWidth*pixelRatio;
-		canvas.height = dImageHeight*pixelRatio;
+	// 	canvas.width = dImageWidth*pixelRatio;
+	// 	canvas.height = dImageHeight*pixelRatio;
 
-		const ctx = canvas.getContext("2d");
-		ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
-		ctx.imageSmoothingquality = "large";
-		ctx.imageSmoothingEnabled = true;
+	// 	const ctx = canvas.getContext("2d");
+	// 	ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
+	// 	ctx.imageSmoothingquality = "large";
+	// 	ctx.imageSmoothingEnabled = true;
 		
-		ctx.drawImage(
-			rc_image,
-			crop.x*scaleX,
-			crop.y*scaleY,
-			dImageWidth,
-			dImageHeight,
-			0,
-			0,
-			dImageWidth,
-			dImageHeight
-		);
+	// 	ctx.drawImage(
+	// 		rc_image,
+	// 		crop.x*scaleX,
+	// 		crop.y*scaleY,
+	// 		dImageWidth,
+	// 		dImageHeight,
+	// 		0,
+	// 		0,
+	// 		dImageWidth,
+	// 		dImageHeight
+	// 	);
 		
-	}},[completedCrop])
+	// }
+},[completedCrop])
 
 	const downloadImage = () => {
 		if(!completedCrop || !canvasRef.current){

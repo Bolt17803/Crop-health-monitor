@@ -13,7 +13,7 @@
 
 
 nav {
-    background-color: #191d56;
+    background-color: #0D4C92;/*91d56*/
     display: flex;
     flex-direction: row;
     height: 10vh;
@@ -30,6 +30,8 @@ nav {
 }
 .nav--title--text{
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: xx-large;
 }
 .nav--element--text:hover{
     color:  #3ccdf9;
@@ -47,6 +49,8 @@ nav > ul > li{
 }
 .nav--element--text{
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: x-large;
 }
 
 
@@ -65,28 +69,33 @@ nav > ul > li{
 }
 .home--text{
     font-family: "Cabin";
+    /* width: 40px; */
+    margin: 0px 0px;
 }
 .hometocrop--button {
-    border: 5px solid #3C6255;
-    margin-bottom: 10vh;
-    font-family: 'Cabin';
+    border: 2px solid #0a8fb8;
+    margin-top: 20px;
+    height: 50px;
+    width: max-content;
+    font-family: 'Montserrat', sans-serif;
     padding: 1px 20px 1px 20px;
     transition-duration: 0.4s;
 }
 .hometocrop--button:hover {
-    background-color: #A6BB8D;
-    border: 5px solid #3C6255;
+    background-color: white;
+    border: 5px solid #1598c0;
 }
 
 
 
 .second_page {
     height: 100vh;
+    background-color: #CFF5E7;
 }
 .second_page--container{
     margin-top: 10vh;
-    /*height: 100%;*/
-    background-color: pink;
+    height: 100%;
+    background-color: #CFF5E7;
     display: flex;
     flex-direction: row;
 }
@@ -95,9 +104,10 @@ nav > ul > li{
 }
 .buttons-panel > button{
     margin: 3px;
+    /* background-color: #59C1BD; */
 }
 .buttons-panel{
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;  
     flex-direction: column;
     width: 20lh;
@@ -106,14 +116,16 @@ nav > ul > li{
     height: 80vh;
 }
 .crop--view{
-    background-color: red;
+    background-color: #A0E4CB;
     display: flex;
     margin: 20px;
-    margin-right: 0px;
+    margin-top: 50px;
+    margin-left: 80px;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 70vh;
     width: 100%;
+    border-radius: 10px;
 }
 
 .crop--image{
@@ -124,26 +136,44 @@ canvas{
 }
 
 .page--about{
-    background-color: red;
-    height: 100vh;
+    background-color: #576CBC;
+    height: 30vh;
 }
 .page--about--container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10vh;
+    margin-top: 2vh;
 }
+
+.page--about--container > h2 {
+    display: inline-block;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+.page--about--container > h1 {
+    /* display: inline-block; */
+    margin-top: 2px;
+    color: white;
+    margin-bottom: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
 /*Buttons CSS*/
 .buttons-panel > button {
-  background-color: #13aa52;
-  border: 1px solid #13aa52;
-  border-radius: 4px;
+  background-color: #0D4C92;/*#13aa52*/
+  /* border: 1px solid #13aa52; */
+  border-radius: 7px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: larger;
+  /* font-family:"Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif*; */
   font-size: 16px;
   font-weight: 400;
   outline: none;
@@ -155,6 +185,9 @@ canvas{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-bottom: 25px;
+  width: 180px;
+  margin-left: 80px;
 }
 
 .buttons-panel > button:hover {
