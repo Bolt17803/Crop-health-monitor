@@ -120,11 +120,13 @@ export default function Crop(){
 										crop={crop}
 										onChange={(c)=>setCrop(c)} 
 										onComplete={(c)=>setCompletedCrop(c)}>
-									<img src={image} onLoad={handleOnLoad} />
+											<div className="image--container">
+												<img src={image} class="crop--image--img" onLoad={handleOnLoad} />
+											</div>
 								</ReactCrop>)}
 					</div>
-					<canvas ref={canvasRef}></canvas>
-				</div>
+				</div>				
+				<canvas ref={canvasRef}></canvas>
 				<div className="buttons-panel">
 					<input className='image--input' type='file' accept='image/*' ref={imageRef} onChange={handleImageChanged}/>
 					<button className='btn--img' type='button' onClick={()=>imageRef.current.click()}>Upload Image</button>
