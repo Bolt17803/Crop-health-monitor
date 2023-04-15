@@ -1,6 +1,7 @@
 import React from "react"
 import { useState, useRef, useCallback, useEffect } from 'react';
 import ReactCrop from "react-image-crop";
+import 'react-image-crop/dist/ReactCrop.css';
 
 export default function Crop(){
     const imageRef = useRef();
