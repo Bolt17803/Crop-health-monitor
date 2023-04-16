@@ -93,6 +93,64 @@ nav > ul > li{
     border: 5px solid #1598c0;
 }
 
+.green_circle {
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    right: 0px;
+    top: -106px;
+}
+
+.robo {
+    position: fixed;
+    width: 550px;
+    height: 520px;
+    right: 0px;
+    top: 30px;
+}
+
+.crop {
+    position: fixed;
+    width: 390px;
+    height: 300px;
+    left: 930px;
+    top: 65px;
+}
+
+.white1 {
+    position: absolute;
+    width: 420px;
+    height: 241px;
+    /* left: 938px; */
+    right: 0px;
+    top: 380px;
+}
+
+.white2 {
+    position: absolute;
+    width: 389px;
+    height: 300px;
+    left: 649px;
+    top: 300px;
+}
+
+.heading {
+    position: absolute;
+    width: 440px;
+    height: 92px;
+    left: 138.4px;
+    top: 180.6px;
+
+    background: #5DA029;
+    border-radius: 50px;
+}
+
+.heading > h2 {
+    color: white;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: xx-large;
+}
 
 
 .second_page {

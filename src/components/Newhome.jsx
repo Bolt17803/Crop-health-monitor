@@ -12,6 +12,7 @@ export default function Newhome(){
             <div className="heading">
                 <h2>Crop Health Monitor</h2>
             </div>
+            <div><h2>Empowering farmers with smart crop health solutions</h2></div>
             <img src={green_cicle} className="green_circle" />
             <img src={white1} className="white1" />
             <img src={white2} className="white2" />

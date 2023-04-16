@@ -4,17 +4,18 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Crop from './components/Crop'
 import About from './components/About'
-
+import Newhome from "./components/Newhome"
 import './Styles.css';
 
 function App() {
 
   return (
     <div className='maindiv'>
-      <Navbar />
+      <Newhome />
+      {/* <Navbar />
       <Home />
       <Crop />
-      <About />
+      <About /> */}
     </div>
   )
 }
