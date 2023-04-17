@@ -56,6 +56,25 @@ nav > ul > li{
     display: inline-block;
 }
 
+.nav_buttons {
+    position: absolute;
+    width: 150px;
+    height: 28px;
+    left: 706px;
+    top: 20px;
+    margin: 0 0 0 0;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 30px;
+
+    color: #FFFFFF;
+}
+.nav_buttons > h3 {
+    margin: 0px 0px 0px 0px;
+}
 
 .home--container{
     margin-top: 30vh;
@@ -118,7 +137,7 @@ nav > ul > li{
 }
 
 .white1 {
-    position: absolute;
+    position: fixed;
     width: 420px;
     height: 241px;
     /* left: 938px; */
@@ -127,7 +146,7 @@ nav > ul > li{
 }
 
 .white2 {
-    position: absolute;
+    position: fixed;
     width: 389px;
     height: 300px;
     left: 649px;
@@ -145,13 +164,32 @@ nav > ul > li{
     border-radius: 50px;
 }
 
-.heading > h2 {
+.heading > h1 {
     color: white;
     text-align: center;
     font-family: 'Poppins';
     font-size: xx-large;
 }
 
+.Home_content {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 135px;
+    top: 340px;
+}
+
+.Home_content > h2 {
+font-family: 'Poppins';
+font-style: normal;
+/* font-weight: 500; */
+font-size: 35px;
+/* line-height: 82px; */
+/* identical to box height */
+
+
+color: #333333;
+}
 
 .second_page {
     height: 100vh;
@@ -193,9 +231,6 @@ nav > ul > li{
     border-radius: 10px;
 }
 
-.crop--image{
-    /**/
-}
 canvas{
     display: none;
 }
