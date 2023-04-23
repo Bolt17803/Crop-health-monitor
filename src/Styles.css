@@ -88,62 +88,6 @@ nav > ul > li{
 
 
 
-.second_page {
-    height: 100vh;
-    background-color: #CFF5E7;
-}
-.second_page--container{
-    margin-top: 10vh;
-    height: 100%;
-    background-color: #CFF5E7;
-    display: flex;
-    flex-direction: row;
-}
-.buttons-panel > input{
-    display: none;
-}
-.buttons-panel > button{
-    margin: 3px;
-    /* background-color: #59C1BD; */
-}
-.buttons-panel{
-    /* background-color: blue; */
-    display: flex;  
-    flex-direction: column;
-    width: 20lh;
-    margin: 20px;
-    justify-content: center;
-    height: 80vh;
-}
-.crop--view{
-    background-color: #A0E4CB;
-    display: grid;
-    margin: 20px;
-    margin-top: 50px;
-    margin-left: 80px;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    width: 100%;
-    border-radius: 10px;
-}
-.image--container{
-    border-radius: 10px;
-    background-color: red;
-    width:100%;
-    height:70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.image--container  img{
-    max-width: 100%;
-    max-height: 100%;
-}
-canvas{
-    display: none;
-}
-
 .page--about{
     background-color: #576CBC;
     height: 30vh;
@@ -169,43 +113,4 @@ canvas{
     color: white;
     margin-bottom: 0px;
     font-family: 'Montserrat', sans-serif;
-}
-
-/*Buttons CSS*/
-.buttons-panel > button {
-  background-color: #0D4C92;/*#13aa52*/
-  /* border: 1px solid #13aa52; */
-  border-radius: 7px;
-  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-size: larger;
-  /* font-family:"Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif*; */
-  font-size: 16px;
-  font-weight: 400;
-  outline: none;
-  outline: 0;
-  padding: 10px 25px;
-  text-align: center;
-  transform: translateY(0);
-  transition: transform 150ms, box-shadow 150ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  margin-bottom: 25px;
-  width: 180px;
-  margin-left: 80px;
-}
-
-.buttons-panel > button:hover {
-  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
-  transform: translateY(-2px);
-}
-
-@media (min-width: 768px) {
-    .buttons-panel > button {
-    padding: 10px 30px;
-  }
 }

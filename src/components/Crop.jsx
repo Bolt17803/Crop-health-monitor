@@ -1,20 +1,27 @@
 import React from "react"
 import { useState, useRef, useCallback, useEffect } from 'react';
 import ReactCrop from "react-image-crop";
+import './crop_page_controls_styles.css';
+
 
 export default function Crop(){
+
+	var fruitNameList = ["Apple","Blueberry","Cherry","Corn","Grape","Orange","Peach","Pepper","Potato","Raspberry","Soybean","Squash","Strawberry","Tomato"]
+
     const imageRef = useRef();
 	const rcImageRef = useRef();
 	const canvasRef = useRef();
+
+	const [cropData, setCropData] = useState(null);
 	const [image, setImage] = useState(null);
 	const [croppedImage, setCroppedImage] = useState(null);
-	
+	const [selection,setSelection] = useState(null);
 	const [crop, setCrop] = useState({ aspect: 9/16 });
 	const [completedCrop, setCompletedCrop] = useState(null);
 
 	const handleImageChanged = (event) => {
 		const {files} = event.target;
-
+		
 		if(files && files.length > 0){
 			const reader = new FileReader();
 			reader.readAsDataURL(files[0]);
@@ -42,7 +49,6 @@ export default function Crop(){
 		if(completedCrop && rcImageRef){
 			const rc_image = rcImageRef.current;
 			const canvas = canvasRef.current;
-			console.log("canvas: >>,canvas")
 			const crop = completedCrop;
 
 			const scaleX = rc_image.naturalWidth/ rc_image.width;
@@ -77,23 +83,34 @@ export default function Crop(){
 	},[completedCrop])
 
 	const handleSubmit = (e) => {
+
+		const scaleX = rcImageRef.current.naturalWidth/rcImageRef.current.clientWidth;
+		const scaleY = rcImageRef.current.naturalHeight/rcImageRef.current.clientHeight;
+		setCropData({
+			x1: Math.floor(crop.x*(scaleX)),
+			y1: Math.floor(crop.y*(scaleY)),
+			x2: Math.floor((crop.x+crop.width)*(scaleX)),
+			y2: Math.floor((crop.y+crop.height)*(scaleY))
+		});
+		console.log(cropData);
 		const formData = new FormData();
+
 		formData.append(
 			"file",
 			croppedImage,
 			"testpic.png"
 		);
+		formData.append("data", JSON.stringify(cropData)); 
 
-		const requestOptions={
+		const requestOptions={	
 			method: 'POST',
-			body: formData
+			body: formData,
 		};
 
 		fetch("http://127.0.0.1:8000/upload/", requestOptions)
 		.then(response => console.log(response.json()))
-		.then(function(response){
-			console.log(response)
-		})
+		.then(data => console.log(data))
+		.catch(error => console.error(error));
 	}
 
 	const downloadImage = () => {
@@ -118,8 +135,8 @@ export default function Crop(){
 					<div className="crop--image">
 					{image && (<ReactCrop className="rc" src={image} 
 										crop={crop}
-										onChange={(c)=>setCrop(c)} 
-										onComplete={(c)=>setCompletedCrop(c)}>
+										onChange={(c)=>{console.log(cropData);setCrop(c)}} 
+										onComplete={(c)=>{console.log(cropData);setCompletedCrop(c)}}>
 											<div className="image--container">
 												<img src={image} class="crop--image--img" onLoad={handleOnLoad} />
 											</div>
@@ -134,6 +151,22 @@ export default function Crop(){
 					<button className='btn--crop' type='button' onClick={handleSubmit}>Submit Image</button>
 					<button className='btn--revert' type='button' onClick={clear}>Revert back to original</button>
 					{/* <button className='btn--download' type='button' disabled={!completedCrop?.width || !completedCrop.height} onClick={downloadImage}>Download</button> */}
+					<div class="radiobutton-container">
+						<div class="container">
+							<input type="radio" class="hidden" id="input1" name="inputs" onChange={()=>{setSelection("Fruit");}}/>
+							<label class="entry" for="input1"><div class="circle"></div><div class="entry-label">Fruit</div></label>
+							<input type="radio" class="hidden" id="input2" name="inputs" onChange={()=>{setSelection("Leaf");}}/>
+							<label class="entry" for="input2"><div class="circle"></div><div class="entry-label">Leaf</div></label>
+							<div class="highlight"></div>
+							<div class="overlay"></div>
+						</div>
+					</div>
+					<div className="fruit-dropdown">
+						<select id="fruit-selector" name="fruit" class="fruit-dropdown" disabled={selection == null}>
+							<option value="none" selected disabled hidden>Select a Fruit</option>
+							{fruitNameList.map((item)=>(<option value={item}>{item}</option>))}
+						</select>
+					</div>
 				</div>
 			</div>
         </div>

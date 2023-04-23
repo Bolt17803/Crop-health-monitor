@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File
+from fastapi import FastAPI, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import io
@@ -23,8 +23,9 @@ async def root():
     return {"message": "Hello World"}
 
 @app.post("/upload")
-async def recieveFile(file: bytes = File(...)):
+async def recieveFile(file: bytes = File(...),data: str = Form(...)):
     image = Image.open(io.BytesIO(file))
-    image.show()
+    #image.show()
     print(file)
+    print(data)
     return {"uploadStatus":"Complete"}
