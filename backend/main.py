@@ -25,7 +25,7 @@ async def root():
 @app.post("/upload")
 async def recieveFile(file: bytes = File(...),data: str = Form(...)):
     image = Image.open(io.BytesIO(file))
-    #image.show()
+    image.show()
     print(file)
     print(data)
     return {"uploadStatus":"Complete"}

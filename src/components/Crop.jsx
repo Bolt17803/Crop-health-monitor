@@ -49,35 +49,44 @@ export default function Crop(){
 		if(completedCrop && rcImageRef){
 			const rc_image = rcImageRef.current;
 			const canvas = canvasRef.current;
-			const crop = completedCrop;
+			//The below code is to upoad cropped pic!:
 
-			const scaleX = rc_image.naturalWidth/ rc_image.width;
-			const scaleY = rc_image.naturalHeight/ rc_image.height;
+			// const crop = completedCrop;
 
-			const pixelRatio = window.devicePixelRatio;
-			const dImageWidth = crop.width*scaleX;
-			const dImageHeight = crop.height*scaleY;
+			// const scaleX = rc_image.naturalWidth/ rc_image.width;
+			// const scaleY = rc_image.naturalHeight/ rc_image.height;
 
-			canvas.width = dImageWidth*pixelRatio;
-			canvas.height = dImageHeight*pixelRatio;
+			// const pixelRatio = window.devicePixelRatio;
+			// const dImageWidth = crop.width*scaleX;
+			// const dImageHeight = crop.height*scaleY;
 
-			const ctx = canvas.getContext("2d");
-			ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
-			ctx.imageSmoothingquality = "large";
-			ctx.imageSmoothingEnabled = true;
+			// canvas.width = dImageWidth*pixelRatio;
+			// canvas.height = dImageHeight*pixelRatio;
+
+			// const ctx = canvas.getContext("2d");
+			// ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
+			// ctx.imageSmoothingquality = "large";
+			// ctx.imageSmoothingEnabled = true;
 			
-			ctx.drawImage(
-				rc_image,
-				crop.x*scaleX,
-				crop.y*scaleY,
-				dImageWidth,
-				dImageHeight,
-				0,
-				0,
-				dImageWidth,
-				dImageHeight
-			);
-			canvas.toBlob(setCroppedImage)
+			// ctx.drawImage(
+			// 	rc_image,
+			// 	crop.x*scaleX,
+			// 	crop.y*scaleY,
+			// 	dImageWidth,
+			// 	dImageHeight,
+			// 	0,
+			// 	0,
+			// 	dImageWidth,
+			// 	dImageHeight
+			// );
+			// canvas.toBlob(setCroppedImage)
+
+			//The below code is to upload full pic!: (ignore the setCroppedPic namw :P)
+			canvas.width = rc_image.naturalWidth;
+			canvas.height = rc_image.naturalHeight;
+			const ctx = canvas.getContext('2d');
+			ctx.drawImage(rc_image, 0, 0);
+			canvas.toBlob(setCroppedImage);
 			
 		}
 	},[completedCrop])
