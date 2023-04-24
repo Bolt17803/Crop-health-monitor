@@ -85,7 +85,10 @@ canvas{
   box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
 }
-
+.buttons-panel > button:disabled, button[disabled]{
+  background-color: #cccccc;
+  color: #666666;
+}
 @media (min-width: 768px) {
     .buttons-panel > button {
     padding: 10px 30px;
@@ -205,6 +208,10 @@ canvas{
   font-family: Arial, sans-serif;
   width: 200px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.fruit-dropdown:disabled, .fruit-dropdown[disabled]{
+  background-color: #cccccc;
+  color: #666666;
 }
 .fruit-dropdown option {
   color: #333;

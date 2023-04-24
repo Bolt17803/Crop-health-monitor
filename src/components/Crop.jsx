@@ -16,6 +16,7 @@ export default function Crop(){
 	const [image, setImage] = useState(null);
 	const [croppedImage, setCroppedImage] = useState(null);
 	const [selection,setSelection] = useState(null);
+	const [species, setSpecies] = useState(null);
 	const [crop, setCrop] = useState({ aspect: 9/16 });
 	const [completedCrop, setCompletedCrop] = useState(null);
 
@@ -92,7 +93,6 @@ export default function Crop(){
 	},[completedCrop])
 
 	const handleSubmit = (e) => {
-
 		const scaleX = rcImageRef.current.naturalWidth/rcImageRef.current.clientWidth;
 		const scaleY = rcImageRef.current.naturalHeight/rcImageRef.current.clientHeight;
 		setCropData({
@@ -122,6 +122,15 @@ export default function Crop(){
 		.catch(error => console.error(error));
 	}
 
+	const handleSelectionSubmit = (e) => {
+		const newFormData = new FormData();
+		newFormData.append("data",JSON.stringify({Selection: {selection}, Species: {species}}));
+
+		fetch("http://127.0.0.1:8000/upload_selection/", {method:'POST',body: newFormData,})
+		.then(response => console.log(response.json()))
+		.then(data => console.log(data))
+		.catch(error => console.error(error));
+	}
 	const downloadImage = () => {
 		if(!completedCrop || !canvasRef.current){
 			return;
@@ -150,15 +159,14 @@ export default function Crop(){
 												<img src={image} class="crop--image--img" onLoad={handleOnLoad} />
 											</div>
 								</ReactCrop>)}
-					</div>
+					</div>	
 				</div>				
 				<canvas ref={canvasRef}></canvas>
 				<div className="buttons-panel">
 					<input className='image--input' type='file' accept='image/*' ref={imageRef} onChange={handleImageChanged}/>
 					<button className='btn--img' type='button' onClick={()=>imageRef.current.click()}>Upload Image</button>
-					<button className='btn--cancel' type='button' onClick={clear}>Cancel Operation</button>
 					<button className='btn--crop' type='button' onClick={handleSubmit}>Submit Image</button>
-					<button className='btn--revert' type='button' onClick={clear}>Revert back to original</button>
+					<button className='btn--cancel' type='button' onClick={clear}>Clear</button>
 					{/* <button className='btn--download' type='button' disabled={!completedCrop?.width || !completedCrop.height} onClick={downloadImage}>Download</button> */}
 					<div class="radiobutton-container">
 						<div class="container">
@@ -171,11 +179,12 @@ export default function Crop(){
 						</div>
 					</div>
 					<div className="fruit-dropdown">
-						<select id="fruit-selector" name="fruit" class="fruit-dropdown" disabled={selection == null}>
+						<select id="fruit-selector" name="fruit" class="fruit-dropdown" onChange={(event)=>{setSpecies(event.target.value);}} disabled={selection == null}>
 							<option value="none" selected disabled hidden>Select a Fruit</option>
 							{fruitNameList.map((item)=>(<option value={item}>{item}</option>))}
 						</select>
 					</div>
+					<button className='btn--analyse' type='button' onClick={handleSelectionSubmit} disabled={species == null}>Analyse</button>
 				</div>
 			</div>
         </div>
