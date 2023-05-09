@@ -117,7 +117,7 @@ def predict_image(img, model):
     """Converts image to array and return the predicted class
         with highest probability"""
     # Convert to a batch of 1
-    xb = to_device(img.unsqueeze(0), device)
+    xb = to_device(img.unsqueeze(0), torch.device("cpu")) #DIFF
     # Get predictions from model
     yb = model(xb)
     # Pick index with highest probability
@@ -125,14 +125,19 @@ def predict_image(img, model):
     # Retrieve the class label
     return train[preds[0].item()]
 
-model = None
-def initialize():
-    model = torch.load("./plant-disease-model-v2(b8)-complete.pth")
-    model.eval()
+#DIFF#DIFF#DIFF
+# model = None
+# def initialize():
+model = ResNet9(3,38)
+model.load_state_dict(torch.load("./models/plant-disease-model-v2(b8)-state_dict.pth",map_location=torch.device("cpu")))
+#model = torch.load("./models/plant-disease-model-v2(b8)-complete.pth")
+model.eval()
+model.to("cpu")
 
 def predict(image):
     image = image.resize((256,256))
     image = image.convert('RGB')
     preprocess = transforms.Compose([transforms.ToTensor()])
     preprocessed_image = torch.unsqueeze(preprocess(image), 0)
+    preprocessed_image.to(torch.device("cpu"))  #DIFF
     return predict_image(preprocessed_image[0],model)
