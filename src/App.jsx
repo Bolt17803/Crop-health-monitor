@@ -1,21 +1,16 @@
-import{ BrowserRouter, Routes, Route, Link} from "react-router-dom"
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import Home from './components/Home'
+import{ BrowserRouter, Route, Routes} from "react-router-dom"
 import Crop from './components/Crop'
-import About from './components/About'
-
+import Newhome from "./components/Newhome"
 import './Styles.css';
 
 function App() {
-
   return (
-    <div className='maindiv'>
-      <Navbar />
-      <Home />
-      <Crop />
-      <About />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Newhome />} />
+        <Route exact path="/Analyze" element={<Crop />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
