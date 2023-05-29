@@ -19,8 +19,6 @@ export default function Crop(){
 	const [species, setSpecies] = useState(null);
 	const [crop, setCrop] = useState({ aspect: 9/16 });
 	const [completedCrop, setCompletedCrop] = useState(null);
-	const [testimg, setTestimg] = useState(null);
-	const [disease, setDisease] = useState("");
 
 	const handleImageChanged = (event) => {
 		const {files} = event.target;
@@ -103,31 +101,34 @@ export default function Crop(){
 			x2: Math.floor((crop.x+crop.width)*(scaleX)),
 			y2: Math.floor((crop.y+crop.height)*(scaleY))
 		});
-		console.log("Sent");
+		console.log(cropData);
 		const formData = new FormData();
 
-		formData.append("file",croppedImage,"testpic.png");
+		formData.append(
+			"file",
+			croppedImage,
+			"testpic.png"
+		);
 		formData.append("data", JSON.stringify(cropData)); 
 
-		const requestOptions={method: 'POST',body: formData,};
+		const requestOptions={	
+			method: 'POST',
+			body: formData,
+		};
 
 		fetch("http://127.0.0.1:8000/upload/", requestOptions)
-		.then(response => response.json())
-		.then(data => {console.log("B64 image:"+data.result);setImage(data.result);})
+		.then(response => console.log(response.json()))
+		.then(data => console.log(data))
 		.catch(error => console.error(error));
 	}
 
 	const handleSelectionSubmit = (e) => {
 		const newFormData = new FormData();
-
-		newFormData.append("file",croppedImage,"testpic.png");
 		newFormData.append("data",JSON.stringify({Selection: {selection}, Species: {species}}));
 
-		const requestOptions={method: 'POST',body: newFormData,};
-
-		fetch("http://127.0.0.1:8000/upload_selection/", requestOptions)
-		.then(response => response.json())
-		.then(data => {console.log("Disease:"+data.result);setDisease(data.result);})
+		fetch("http://127.0.0.1:8000/upload_selection/", {method:'POST',body: newFormData,})
+		.then(response => console.log(response.json()))
+		.then(data => console.log(data))
 		.catch(error => console.error(error));
 	}
 	const downloadImage = () => {
@@ -149,26 +150,16 @@ export default function Crop(){
         <div className="second_page" id="crop">
 			<div className="second_page--container">
 				<div className='crop--view'>
-					<div className="image--container">
-						{/* <div className="crop--image"> */}
-							{image && (<ReactCrop className="rc" src={image} 
-												crop={crop}
-												onChange={(c)=>{
-													console.log(cropData);setCrop(c);
-													const scaleX = rcImageRef.current.naturalWidth/rcImageRef.current.clientWidth;
-													const scaleY = rcImageRef.current.naturalHeight/rcImageRef.current.clientHeight;
-													setCropData({
-														x1: Math.floor(crop.x*(scaleX)),
-														y1: Math.floor(crop.y*(scaleY)),
-														x2: Math.floor((crop.x+crop.width)*(scaleX)),
-														y2: Math.floor((crop.y+crop.height)*(scaleY))
-													});}} 
-												onComplete={(c)=>{console.log(cropData);setCompletedCrop(c)}}>
-														<img src={image} class="crop--image" onLoad={handleOnLoad} />
-										</ReactCrop>)}
-							{/* <img src={testimg} className="crop--image" alt="overlay"/> < */}
-						{/* </div>	 */}
-					</div>
+					<div className="crop--image">
+					{image && (<ReactCrop className="rc" src={image} 
+										crop={crop}
+										onChange={(c)=>{console.log(cropData);setCrop(c)}} 
+										onComplete={(c)=>{console.log(cropData);setCompletedCrop(c)}}>
+											<div className="image--container">
+												<img src={image} class="crop--image--img" onLoad={handleOnLoad} />
+											</div>
+								</ReactCrop>)}
+					</div>	
 				</div>				
 				<canvas ref={canvasRef}></canvas>
 				<div className="buttons-panel">
@@ -194,7 +185,6 @@ export default function Crop(){
 						</select>
 					</div>
 					<button className='btn--analyse' type='button' onClick={handleSelectionSubmit} disabled={species == null}>Analyse</button>
-					<h4>{disease}</h4>
 				</div>
 			</div>
         </div>

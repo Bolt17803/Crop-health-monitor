@@ -16,7 +16,7 @@ nav {
     background-color: #0D4C92;/*91d56*/
     display: flex;
     flex-direction: row;
-    height: fit-content;
+    height: 10vh;
     position: fixed;
     top: 0; 
     width: 100%; 
@@ -51,42 +51,11 @@ nav > ul > li{
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: x-large;
-    /* position: absolute; */
-    position: relative;
-    display: inline-block;
 }
 
-.nav_buttons {
-    position: absolute;
-    width: 150px;
-    height: 28px;
-    left: 706px;
-    top: 20px;
-    margin: 0 0 0 0;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 30px;
-
-    color: #FFFFFF;
-}
-.analyze {
-    position: absolute;
-    top: 4%;
-    left: 55%;
-    color: white;
-    /* top: 10%; */
-    font-family: 'Poppins';
-    margin: 0px 0px 0px 0px;
-    font-size: 0.6cm;
-}
 
 .home--container{
-    margin-top: 30vh;
-    margin-bottom: auto;
-    display: contents;
+    margin-top: 10vh;
 }
 .home_back {
     text-align: center;
@@ -96,9 +65,7 @@ nav > ul > li{
 }
 .home--image{
     width: 200px;
-    margin-top: 150px;
-    /* display: flex;
-    align-items: center; */
+    margin-top: 80px;
 }
 .home--text{
     font-family: "Cabin";
@@ -120,133 +87,6 @@ nav > ul > li{
 }
 
 
-
-.green_circle {
-    position: absolute;
-    width: 50vw;
-    height: 95vh;
-    right: 0px;
-    top: -106px;
-}
-
-.robo {
-    position: absolute;
-    width: 45vw;
-    height: 95vh;
-    right: 0%;
-    top: 0%;
-}
-
-.crop {
-    position: absolute;
-    width: 27vw;
-    height: 44vh;
-    left: 65%;
-    top: 12%;
-}
-
-.white1 {
-    position: absolute;
-    width: 420px;
-    height: 241px;
-    /* left: 938px; */
-    right: 0%;
-    top: 60%;
-
-}
-
-.white2 {
-    position: absolute;
-    width: 389px;
-    height: 300px;
-    left: 50%;
-    top: 53%;
-}
-
-.heading {
-    position: absolute;
-    width: 30vw;
-    height: 10vh;
-    left: 10%;
-    top: 30%;
-    /* padding: 5px 5px 5px 5px; */
-    background: #5DA029;
-    border-radius: 50px;
-    padding: 10px 0px 0px 30px;
-    text-align: center;
-}
-
-.heading > h1 {
-    color: white;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    font-family: 'Poppins';
-    font-size: xx-large;
-    position: absolute;
-    margin: 0px 0px 0px 0px;
-}
-
-.Home_content {
-    position: absolute;
-    width: 40vw;
-    height: 10vh;
-    left: 10%;
-    top: 50%;
-}
-
-.home_text {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-size: 5vh;
-    left: 40%;
-    top: 40%;
-    color: #333333;
-}
-
-.second_page {
-    height: 100vh;
-    background-color: #CFF5E7;
-}
-.second_page--container{
-    margin-top: 10vh;
-    height: 100%;
-    background-color: #CFF5E7;
-    display: flex;
-    flex-direction: row;
-}
-.buttons-panel > input{
-    display: none;
-}
-.buttons-panel > button{
-    margin: 3px;
-    /* background-color: #59C1BD; */
-}
-.buttons-panel{
-    /* background-color: blue; */
-    display: flex;  
-    flex-direction: column;
-    width: 20lh;
-    margin: 20px;
-    justify-content: center;
-    height: 80vh;
-}
-.crop--view{
-    background-color: #A0E4CB;
-    display: flex;
-    margin: 20px;
-    margin-top: 50px;
-    margin-left: 80px;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    width: 100%;
-    border-radius: 10px;
-}
-
-canvas{
-    display: none;
-}
 
 .page--about{
     background-color: #576CBC;
