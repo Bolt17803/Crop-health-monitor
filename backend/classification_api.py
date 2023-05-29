@@ -13,7 +13,7 @@ def get_default_device():
         return torch.device("cuda")
     else:
         return torch.device("cpu")
-
+    
 # for moving data to device (CPU or GPU)
 def to_device(data, device):
     """Move tensor(s) to chosen device"""
@@ -123,6 +123,7 @@ def predict_image(img, model):
     # Pick index with highest probability
     _, preds  = torch.max(yb, dim=1)
     # Retrieve the class label
+    print(yb)
     return train[preds[0].item()]
 
 #DIFF#DIFF#DIFF
@@ -130,7 +131,7 @@ def predict_image(img, model):
 # def initialize():
 model = ResNet9(3,38)
 model.load_state_dict(torch.load("./models/plant-disease-model-v2(b8)-state_dict.pth",map_location=torch.device("cpu")))
-#model = torch.load("./models/plant-disease-model-v2(b8)-complete.pth")
+#model=torch.load("./models/plant-disease-model-v2(b8)-complete.pth")
 model.eval()
 model.to("cpu")
 
