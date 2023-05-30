@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react'; 
+import { useNavigate } from "react-router-dom";
 import GridLoader from "react-spinners/GridLoader";
 import PulseLoader from "react-spinners/PulseLoader";
 import Navbar from "./Navbar.jsx";
@@ -7,9 +8,11 @@ import ReactCrop from "react-image-crop";
 import './crop_page_controls_styles.css';
 
 
-export default function Crop(){
+export default function Crop({setResultFunction}){
 
 	var fruitNameList = ["Apple","Blueberry","Cherry","Corn","Grape","Orange","Peach","Pepper","Potato","Raspberry","Soybean","Squash","Strawberry","Tomato"]
+
+	const navigate = useNavigate();
 
     const imageRef = useRef();
 	const rcImageRef = useRef();
@@ -134,7 +137,13 @@ export default function Crop(){
 
 		fetch("http://127.0.0.1:8000/upload_selection/", requestOptions)
 		.then(response => response.json())
-		.then(data => {console.log("Disease:"+data.result);setDisease(data.result);setClassResultLoading(false);})
+		.then(data => {
+			console.log("Disease:"+Object.keys(JSON.parse(data.result)[0]));
+			setDisease(Object.keys(JSON.parse(data.result)[0]));
+			setClassResultLoading(false);
+			setResultFunction(JSON.parse(data.result));
+			navigate("/Crop-health-monitor/Results");
+		})
 		.catch(error => console.error(error));
 	}
 	const downloadImage = () => {
@@ -158,7 +167,7 @@ export default function Crop(){
 			{ classResultLoading &&
 				<div className="pulseLoadingScreen">
 					<PulseLoader
-					className="gridloader"
+					    className="pulseLoader"
 						color={"#0094ffb8"}
 						loading={classResultLoading}
 						size={15}

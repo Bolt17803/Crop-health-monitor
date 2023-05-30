@@ -5,6 +5,7 @@ import torch.nn as nn           # for creating  neural networks
 from PIL import Image,ImageOps           # for checking images
 import torch.nn.functional as F # for functions for calculating loss
 import torchvision.transforms as transforms   # for transforming images into tensors 
+import json
 
 # for moving data into GPU (if available)
 def get_default_device():
@@ -120,11 +121,18 @@ def predict_image(img, model):
     xb = to_device(img.unsqueeze(0), torch.device("cpu")) #DIFF
     # Get predictions from model
     yb = model(xb)
+    #Applying softmax
+    prob = F.softmax(yb,dim=1)
     # Pick index with highest probability
-    _, preds  = torch.max(yb, dim=1)
+    percentages, indices  = torch.topk(prob, 5, dim=1)
     # Retrieve the class label
-    print(yb)
-    return train[preds[0].item()]
+    l = []
+    for i in range(5):
+        l.append({train[indices[0][i].item()]:percentages[0][i].item()})
+    
+    stringified_list = json.dumps(l)
+    print(stringified_list)
+    return stringified_list
 
 #DIFF#DIFF#DIFF
 # model = None

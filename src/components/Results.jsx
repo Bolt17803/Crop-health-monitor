@@ -2,13 +2,8 @@ import React from "react";
 import { useState, useRef, useCallback, useEffect } from "react";
 import './results_page_styles.css';
 
-export default function Results(){
-    var percentages = {
-        "Tomato late blight" : 95.2,
-        "Tomato early blight" : 3.9,
-        "Tomato rust" : 0.9
-    }
-
+export default function Results({results}){
+	
     const ResultCard = (props) => {
         console.log(props.props);
         return(
@@ -24,8 +19,13 @@ export default function Results(){
         )
     }
 
+    useEffect(()=>{
+        console.log("idigora:");
+    }, [results]);
+
+
     return(
-        <div className="results--page">
+        <div className="results--page" key={results}>
             <h1>Results</h1>
             <div className="results--page--header">
                 {/* <h2 className="results--header--number">No.</h2> */}
@@ -33,9 +33,19 @@ export default function Results(){
                 <h2 className="results--header--probability">Probability</h2>
                 <h2 className="results--header--remedy">Remedies</h2>
             </div>
-            <ResultCard props={[1,"Tomato late blight",percentages["Tomato late blight"],"https://ipm.ucanr.edu/agriculture/tomato/late-blight/"]}/>
-            <ResultCard props={[2,"Tomato early blight",percentages["Tomato early blight"],"https://ipm.ucanr.edu/agriculture/tomato/early-blight/"]}/>
-            <ResultCard props={[3,"Tomato rust",percentages["Tomato rust"],"https://ipm.ucanr.edu/agriculture/tomato/bacterial-spot/"]}/>
+            {
+                results 
+                && 
+                results.map((item)=>{
+                    var name = Object.keys(item)[0];  
+                    var probability = ((Object.values(item)[0])*100).toFixed(2);
+                    console.log("NAMAEWA:"+item);
+                    console.log(name,probability);
+                    return(
+                        <ResultCard props={[(1+results.indexOf(item)),name,probability,"https://www.youtube.com/watch?v=dQw4w9WgXcQ"]} />
+                    );
+                })
+            }
         </div>
     )
 }
