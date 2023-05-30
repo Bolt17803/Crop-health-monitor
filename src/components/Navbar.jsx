@@ -1,20 +1,16 @@
 import React from "react"
-import '../Styles.css'
+import '../Styles.css';
+import './nav_bar_styles.css';
 import iitbhilai_logo from "../assets/iitbhilai_logo.png";
 import { BrowserRouter, Link } from "react-router-dom"
 import { HashLink } from "react-router-hash-link"
 
 export default function Navbar(){
     return(
-    < BrowserRouter>
-    <nav>
-        <h1 class="nav--title"><HashLink to="#home" smooth><a href="#" className="nav--title--text">Crop Health Monitor</a></HashLink></h1>
-        <ul class="nav--elements">
-            <li><HashLink to="#home" smooth><a href="#" className="nav--element--text">Home</a></HashLink></li>
-            <li><HashLink to="#crop" smooth><a href="#" className="nav--element--text">Upload</a></HashLink></li>
-            <li><HashLink to="#about" smooth><a href="#" className="nav--element--text">About</a></HashLink></li>
-        </ul>
-    </nav>
-    </BrowserRouter>
+        <div className="nav">
+                < Link to="/Crop-health-monitor" className="analyze"><div className="nav--Analyze">Analyze plant</div></Link>
+                < Link to="/Analyze" className="analyze"><div className="nav--Home">Crop Health Monitor</div></Link>
+                < Link to="/About" className="analyze"><div className="nav--About">About</div></Link>
+        </div>
     )
 }

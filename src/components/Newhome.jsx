@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 import { Link } from 'react-router-dom';
-import '../Styles.css'
+import Navbar from "./Navbar.jsx";
+import '../Styles.css';
+import './nav_bar_styles.css';
+
 import green_cicle from "../assets/Ellipse 1.png"
 import robot_hand from "../assets/hand-transformed.png"
 import white1 from "../assets/Ellipse 2.png"
@@ -14,6 +17,7 @@ import leaf4 from "../assets/leaf4.png"
 import leaf5 from "../assets/leaf5.png"
 import leaf9 from "../assets/leaf9.png"
 import leaf10 from "../assets/leaf10.png"
+
 export default function Newhome(){
     function MyComponent() {
         const [response, setResponse] = useState(null);
@@ -37,7 +41,7 @@ export default function Newhome(){
             <img src={white2} className="white2" />
             <img src={leaf} className="crop" />
             <img src={robot_hand} className="robo" /> */}
-            <div>< Link to="/Analyze" className="analyze">Analyze plant</Link></div>
+            <Navbar />
         </div>
     )
 }

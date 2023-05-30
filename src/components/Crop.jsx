@@ -1,5 +1,6 @@
 import React from "react"
 import { useState, useRef, useCallback, useEffect } from 'react';
+import Navbar from "./Navbar.jsx";
 import ReactCrop from "react-image-crop";
 import './crop_page_controls_styles.css';
 
@@ -147,6 +148,7 @@ export default function Crop(){
 
     return(
         <div className="second_page" id="crop">
+			<Navbar />
 			<div className="second_page--container">
 				<div className='crop--view'>
 					<div className="image--container">

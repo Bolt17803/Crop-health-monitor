@@ -72,10 +72,37 @@ nav > ul > li{
 
     color: #FFFFFF;
 }
-.analyze {
+
+.nav--Home {
+    position: absolute;
+    top: 4.5%;
+    left: 2.5%;
+    background-color: rgb(123, 176, 76);
+    border-radius: 17px;
+    padding: 5px 7px 5px 7px;
+    color: white;
+    /* top: 10%; */
+    font-family: 'Poppins';
+    margin: 0px 0px 0px 0px;
+    font-size: 3vh;
+}
+.nav--Analyze {
     position: absolute;
     top: 4.5%;
     left: 55%;
+    background-color: rgb(123, 176, 76);
+    border-radius: 17px;
+    padding: 5px 7px 5px 7px;
+    color: white;
+    /* top: 10%; */
+    font-family: 'Poppins';
+    margin: 0px 0px 0px 0px;
+    font-size: 3vh;
+}
+.nav--About {
+    position: absolute;
+    top: 4.5%;
+    left: 75%;
     background-color: rgb(123, 176, 76);
     border-radius: 17px;
     padding: 5px 7px 5px 7px;
