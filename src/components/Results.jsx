@@ -38,7 +38,7 @@ export default function Results({results}){
                 && 
                 results.map((item)=>{
                     var name = Object.keys(item)[0];  
-                    var probability = ((Object.values(item)[0])*100).toFixed(1);
+                    var probability = ((Object.values(item)[0])*100).toFixed(2);
                     console.log("NAMAEWA:"+item);
                     console.log(name,probability);
                     return(

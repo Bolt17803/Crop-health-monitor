@@ -124,10 +124,10 @@ def predict_image(img, model):
     #Applying softmax
     prob = F.softmax(yb,dim=1)
     # Pick index with highest probability
-    percentages, indices  = torch.topk(prob, 3, dim=1)
+    percentages, indices  = torch.topk(prob, 5, dim=1)
     # Retrieve the class label
     l = []
-    for i in range(3):
+    for i in range(5):
         l.append({train[indices[0][i].item()]:percentages[0][i].item()})
     
     stringified_list = json.dumps(l)
