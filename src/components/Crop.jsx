@@ -207,8 +207,8 @@ export default function Crop({setResultFunction}){
 				enabled={true}
 				steps={steps}
 				initialStep={0}
-				onExit={()=>{console.log("TOUR AYIPAYE!!");setRunOnboarding(false);}}
-				onComplete={()=>{console.log("TOUR AYIPAYE!!");setRunOnboarding(false);}}
+				onExit={()=>{return true;}}
+				onComplete={()=>{return true;}}
 				options={{doneLabel:"Done!",exitOnEsc:true,showProgress:true}}
 			/>	
 			<Navbar />
