@@ -1,0 +1,98 @@
+h1{
+    font-family:'Inter', 'Segoe UI', sans-serif;
+    font-weight: normal;
+    margin: 0;
+    padding: 20px 0 20px 30px;
+}
+
+.results--page--header{
+    display: flex;
+}
+.results--page--header > h2{
+    font-family:'Inter', 'Segoe UI', sans-serif;
+    font-weight:lighter;
+}
+/* .results--header--number{
+    margin-left: 2.5vw
+} */
+.results--header--disease{
+    margin-left: 5vw;
+}
+.results--header--probability{
+    margin-left: auto;
+    margin-right: 31.25vw;
+}
+.results--header--remedy{
+    margin-right: 5.75vw;
+}
+
+.result--card{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding:  0 10px 0 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    justify-content: center;
+    width: 95vw;
+}
+.result--card--number{
+    font-family:'Inter', 'Segoe UI', sans-serif;
+    font-weight: normal;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.result--card--name{
+    font-family:'Inter', 'Segoe UI', sans-serif;
+    font-weight: normal;
+    margin-right: auto;
+}
+.result--card--percentage{
+    font-family:'Inter', 'Segoe UI', sans-serif;
+    font-weight: normal;
+    margin-right: 30vw; /*Needs fixing when size is decreased*/
+}
+.result--card > a{
+    align-self: center;
+}
+.result--card > a > button{
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #00D775, #00BD68);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'inter', sans-serif;
+    height: 44px;
+    line-height: 44px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 200px;
+    border: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+.result--card > a > button:hover {
+    background: #00bd68;
+}
+
+
+.results--page{
+    background-color: rgba(0, 0, 0, 0.05);
+    height: 100vh;
+    width: auto;
+}
+
