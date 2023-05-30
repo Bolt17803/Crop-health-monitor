@@ -1,14 +1,13 @@
 import React from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import './about_page_styles.css';
 
 export default function About(){
-    return (
-        <div className="page--about" id="about">
-            <div className="page--about--container">
-                <h1>Made By:</h1>
-                <h2>Gaddey Hemanth Chowdary & Anumula Chaitanya Sai</h2>
-                {/* <h2>Anumula Chaitanya Sai</h2> */}
-                <p>@ idhi maa adda nuvveedraa naa ***</p>
-            </div>
+
+    return(
+        <div className="about--page">
+            <h1>A Project under <a href="https://www.iitbhilai.ac.in/index.php?pid=nitin">Dr.Nitin Khanna</a> Sir,</h1>
+            <h2>By <a href="https://github.com/Bolt17803">A. Chaitanya Sai</a> and <a href="https://github.com/HemanthGaddey">G. Hemanth Chowdary</a></h2>
         </div>
     )
 }
