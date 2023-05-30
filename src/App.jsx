@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/Crop-health-monitor" element={<Newhome />} />
-        <Route exact path="/Analyze" element={<Crop />} />
-        <Route exact path="/About" element={<About />} />
+        <Route exact path="/Crop-health-monitor/Analyze" element={<Crop />} />
+        <Route exact path="/Crop-health-monitor/About" element={<About />} />
       </Routes>
     </BrowserRouter>
   )
