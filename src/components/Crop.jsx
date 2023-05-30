@@ -1,5 +1,7 @@
-import React from "react"
+import React from "react";
 import { useState, useRef, useCallback, useEffect } from 'react';
+import GridLoader from "react-spinners/GridLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 import Navbar from "./Navbar.jsx";
 import ReactCrop from "react-image-crop";
 import './crop_page_controls_styles.css';
@@ -22,6 +24,8 @@ export default function Crop(){
 	const [completedCrop, setCompletedCrop] = useState(null);
 	const [testimg, setTestimg] = useState(null);
 	const [disease, setDisease] = useState("");
+	const [segImgLoading, setSegImgLoading] = useState(false);
+	const [classResultLoading, setClassResultLoading] = useState(false);
 
 	const handleImageChanged = (event) => {
 		const {files} = event.target;
@@ -96,6 +100,7 @@ export default function Crop(){
 	},[completedCrop])
 
 	const handleSubmit = (e) => {
+		setSegImgLoading(true);
 		const scaleX = rcImageRef.current.naturalWidth/rcImageRef.current.clientWidth;
 		const scaleY = rcImageRef.current.naturalHeight/rcImageRef.current.clientHeight;
 		setCropData({
@@ -114,11 +119,12 @@ export default function Crop(){
 
 		fetch("http://127.0.0.1:8000/upload/", requestOptions)
 		.then(response => response.json())
-		.then(data => {console.log("B64 image:"+data.result);setImage(data.result);})
+		.then(data => {console.log("B64 image:"+data.result);setImage(data.result);setSegImgLoading(false);})
 		.catch(error => console.error(error));
 	}
 
 	const handleSelectionSubmit = (e) => {
+		setClassResultLoading(true);
 		const newFormData = new FormData();
 
 		newFormData.append("file",croppedImage,"testpic.png");
@@ -128,7 +134,7 @@ export default function Crop(){
 
 		fetch("http://127.0.0.1:8000/upload_selection/", requestOptions)
 		.then(response => response.json())
-		.then(data => {console.log("Disease:"+data.result);setDisease(data.result);})
+		.then(data => {console.log("Disease:"+data.result);setDisease(data.result);setClassResultLoading(false);})
 		.catch(error => console.error(error));
 	}
 	const downloadImage = () => {
@@ -145,10 +151,22 @@ export default function Crop(){
 			window.URL.revokeObjectURL(previewUrl);
 		},"image/png",1);
 	}
-
+	  
     return(
         <div className="second_page" id="crop">
 			<Navbar />
+			{ classResultLoading &&
+				<div className="pulseLoadingScreen">
+					<PulseLoader
+					className="gridloader"
+						color={"#0094ffb8"}
+						loading={classResultLoading}
+						size={15}
+						aria-label="Loading Spinner"
+						data-testid="loader"
+					/>
+				</div>
+			}
 			<div className="second_page--container">
 				<div className='crop--view'>
 					<div className="image--container">
@@ -167,10 +185,21 @@ export default function Crop(){
 													});}} 
 												onComplete={(c)=>{console.log(cropData);setCompletedCrop(c)}}>
 														<img src={image} class="crop--image" onLoad={handleOnLoad} />
-										</ReactCrop>)}
+										</ReactCrop>)
+							}
 							{/* <img src={testimg} className="crop--image" alt="overlay"/> < */}
 						{/* </div>	 */}
 					</div>
+					{segImgLoading && <div className="gridLoadingScreen">
+						<GridLoader
+						className="gridloader"
+							color={"#0094ffb8"}
+							loading={segImgLoading}
+							size={15}
+							aria-label="Loading Spinner"
+							data-testid="loader"
+						/>
+					</div>}
 				</div>				
 				<canvas ref={canvasRef}></canvas>
 				<div className="buttons-panel">
@@ -190,7 +219,7 @@ export default function Crop(){
 						</div>
 					</div>
 					<div className="fruit-dropdown">
-						<select id="fruit-selector" name="fruit" class="fruit-dropdown" onChange={(event)=>{setSpecies(event.target.value);}} disabled={selection == null}>
+						<select id="fruit-selector" name="fruit" className="fruit-dropdown" onChange={(event)=>{setSpecies(event.target.value);}} disabled={selection == null}>
 							<option value="none" selected disabled hidden>Select a Fruit</option>
 							{fruitNameList.map((item)=>(<option value={item}>{item}</option>))}
 						</select>

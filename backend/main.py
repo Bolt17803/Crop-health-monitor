@@ -60,7 +60,7 @@ async def recieveFile(file: bytes = File(...),data: str = Form(...)):
     pil_image = Image.fromarray(color_coverted)
     pil_image = pil_image.crop((*coords,))
     pil_image = pil_image.resize((256,256))
-    pil_image.save(f"./apple_black_rot_segmented/{coords}.png")
+    #pil_image.save(f"./{coords}.png") ----> USE THIS IF YOU WANT TO MAKE A DATASET OF SEGMENTING IMAGES
     #print(img_b64s)
     return {"uploadStatus":"Complete","result":"data:image/jpeg;base64,"+img_b64s}#classifier.predict(image)}
     

@@ -6,7 +6,7 @@ from typing import List
 from PIL import Image
 import base64
 
-sam = sam_model_registry['vit_h'](checkpoint="models/sam_vit_h_4b8939.pth")
+sam = sam_model_registry['vit_h'](checkpoint="C:/Models/SAM/sam_vit_h_4b8939.pth")
 predictor = SamPredictor(sam)
 
 class Input(BaseModel) :
