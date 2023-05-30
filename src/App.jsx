@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Newhome />} />
+        <Route exact path="/Crop-health-monitor" element={<Newhome />} />
         <Route exact path="/Analyze" element={<Crop />} />
       </Routes>
     </BrowserRouter>
