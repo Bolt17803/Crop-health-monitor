@@ -21,10 +21,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/Crop-health-monitor" element={<Newhome />} />
-        <Route exact path="/Crop-health-monitor/Analyze" element={<Crop setResultFunction={updateResult}/>} />
-        <Route exact path="/Crop-health-monitor/About" element={<About />} />
-        <Route exact path="/Crop-health-monitor/Results" element={<Results results={result}/>} />
+        <Route exact path="/" element={<Newhome />} />
+        <Route exact path="/Analyze" element={<Crop setResultFunction={updateResult}/>} />
+        <Route exact path="/About" element={<About />} />
+        <Route exact path="/Results" element={<Results results={result}/>} />
       </Routes>
     </BrowserRouter>
   )
