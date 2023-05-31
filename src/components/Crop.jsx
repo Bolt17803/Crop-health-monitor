@@ -6,7 +6,8 @@ import PulseLoader from "react-spinners/PulseLoader";
 import Navbar from "./Navbar.jsx";
 import ReactCrop from "react-image-crop";
 import './crop_page_controls_styles.css';
-
+import 'intro.js/introjs.css';
+import { Steps, Hints } from 'intro.js-react';
 
 export default function Crop({setResultFunction}){
 
@@ -29,7 +30,11 @@ export default function Crop({setResultFunction}){
 	const [disease, setDisease] = useState("");
 	const [segImgLoading, setSegImgLoading] = useState(false);
 	const [classResultLoading, setClassResultLoading] = useState(false);
+	const [runOnboarding, setRunOnboarding] = useState(false);
 
+	useEffect(() => {
+		setRunOnboarding(true);
+	},[]);
 	const handleImageChanged = (event) => {
 		const {files} = event.target;
 		
@@ -100,7 +105,7 @@ export default function Crop({setResultFunction}){
 			canvas.toBlob(setCroppedImage);
 			
 		}
-	},[completedCrop])
+	},[completedCrop]);
 
 	const handleSubmit = (e) => {
 		setSegImgLoading(true);
@@ -160,9 +165,52 @@ export default function Crop({setResultFunction}){
 			window.URL.revokeObjectURL(previewUrl);
 		},"image/png",1);
 	}
-	  
+	
+	const steps = [
+		{
+		  element: '.btn--img',
+		  intro: 'Upload the image of the leaf',
+		  position: 'left',
+		  tooltipClass: 'myTooltipClass',
+		  highlightClass: 'myHighlightClass',
+		},
+		{
+		  element: '.crop--view',
+		  intro: 'Draw a bounding box aroung the leaf to be cropped.',
+		  position: 'right',
+		},
+		{
+		  element: '.btn--crop',
+		  intro: 'Submit the cropped image to be segmented from the background noise',
+		  position: 'left',
+		},
+		{
+		  element: '.radiobutton-container',
+		  intro: 'Select whether the image uploaded is of a Fruit or a Leaf.',
+		  position: 'left',
+		},
+		{
+		  element: '.fruit-dropdown',
+		  intro: 'Select the name of the plant.',
+		  position: 'left',
+		},
+		{
+		  element: '.btn--analyse',
+		  intro: 'Finally, click the analyze button to analyze the leaf\'s image.',
+		  position: 'left',
+		},
+	  ];
+
     return(
         <div className="second_page" id="crop">
+			<Steps
+				enabled={true}
+				steps={steps}
+				initialStep={0}
+				onExit={()=>{return true;}}
+				onComplete={()=>{return true;}}
+				options={{doneLabel:"Done!",exitOnEsc:true,showProgress:true}}
+			/>	
 			<Navbar />
 			{ classResultLoading &&
 				<div className="pulseLoadingScreen">
