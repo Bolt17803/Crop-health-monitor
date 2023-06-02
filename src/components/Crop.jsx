@@ -6,8 +6,8 @@ import PulseLoader from "react-spinners/PulseLoader";
 import Navbar from "./Navbar.jsx";
 import ReactCrop from "react-image-crop";
 import './crop_page_controls_styles.css';
-import 'intro.js/introjs.css';
-import { Steps, Hints } from 'intro.js-react';
+// import 'intro.js/introjs.css';
+// import { Steps, Hints } from 'intro.js-react';
 
 export default function Crop({setResultFunction}){
 
