@@ -6,14 +6,8 @@ from typing import List
 from PIL import Image
 import base64
 
-sam = sam_model_registry['vit_h'](checkpoint="C:/Models/SAM/sam_vit_h_4b8939.pth")
+sam = sam_model_registry['vit_l'](checkpoint="C:/Users/Admin/Desktop/Project/Crop_Health_Monitor/sam_vit_l_0b3195.pth")
 predictor = SamPredictor(sam)
-
-class Input(BaseModel) :
-    x1: int
-    y1: int
-    x2: int
-    y2: int
 
 # image = cv2.imread("t7.jpg")
 # coord = np.array([0,0,236,248])
