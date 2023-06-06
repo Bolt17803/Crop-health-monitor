@@ -1,40 +1,96 @@
+.nav{   
+    position: sticky;
+    top:0;
+    left:0;
+    height: 60px;
 
-.nav--Home {
-    position: absolute;
-    top: 4.5%;
-    left: 2.5%;
-    background-color: rgb(123, 176, 76);
-    border-radius: 17px;
-    padding: 5px 7px 5px 7px;
-    color: white;
-    /* top: 10%; */
-    font-family: 'Poppins';
-    margin: 0px 0px 0px 0px;
-    font-size: 3vh;
+    background-color: white;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: rgb(211, 211, 211);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    z-index: 100;
+
+    transition: background-color 0.3s, opacity 0.3s;
 }
-.nav--Analyze {
-    position: absolute;
-    top: 4.5%;
-    left: 55%;
-    background-color: rgb(123, 176, 76);
-    border-radius: 17px;
-    padding: 5px 7px 5px 7px;
-    color: white;
-    /* top: 10%; */
-    font-family: 'Poppins';
-    margin: 0px 0px 0px 0px;
-    font-size: 3vh;
+.nav-transparent{   
+    position: sticky;
+    top:0;
+    left:0;
+    height: 60px;
+
+    background-color: rgb(255,255,255,0.5);
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    z-index: 100;
+
+    transition: background-color 0.3s, opacity 0.3s;
 }
-.nav--About {
-    position: absolute;
-    top: 4.5%;
-    left: 75%;
-    background-color: rgb(123, 176, 76);
-    border-radius: 17px;
-    padding: 5px 7px 5px 7px;
-    color: white;
-    /* top: 10%; */
-    font-family: 'Poppins';
-    margin: 0px 0px 0px 0px;
-    font-size: 3vh;
+
+
+/* LOGO */
+.logo{
+    position: relative;
+    top: 1px;
+    height:30px;
+    margin-left: 10vw;
+    margin-right: 0px;
+    padding-right: 5px;
 }
+.logo:hover{
+    cursor: pointer; 
+}
+.logo--text{
+    all: unset;
+    margin-left: 0px;
+    margin-right: 50.5vw;
+
+    font-weight: 500;
+    font-size: 24px;
+    color: rgb(0, 100, 0);
+}
+.logo--text:hover{
+    font-weight: 500;
+    color: rgb(0, 100, 0);
+    cursor: pointer;
+}
+
+
+/* The 3 Nav Buttons */
+.analyze{
+    all: unset;
+    transition-duration: 0.05s;
+    color: bla;
+}
+.analyze:hover{
+    color: green;
+    font-weight: 499;
+    cursor: pointer;
+}
+
+.nav--Home{
+    margin-left: auto;
+    margin-right: 2vw;
+}
+.nav--Analyze{
+    margin-left: auto;
+    margin-right: auto;
+}
+.nav--About{
+    margin-left: 2vw;
+    margin-right: 10vw;
+}
+.solid-nav {
+    background-color: #aaa;
+    transition: background-color 0.2s linear;
+  }
+
