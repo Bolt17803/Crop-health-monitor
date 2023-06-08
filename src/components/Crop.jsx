@@ -6,8 +6,9 @@ import PulseLoader from "react-spinners/PulseLoader";
 import Navbar from "./Navbar.jsx";
 import ReactCrop from "react-image-crop";
 import './crop_page_controls_styles.css';
-// import 'intro.js/introjs.css';
-// import { Steps, Hints } from 'intro.js-react';
+import 'intro.js/introjs.css';
+import { Steps, Hints } from 'intro.js-react';
+import bg_plus from '../assets/upper-left-plusbkg.png';
 
 export default function Crop({setResultFunction}){
 
@@ -30,7 +31,7 @@ export default function Crop({setResultFunction}){
 	const [disease, setDisease] = useState("");
 	const [segImgLoading, setSegImgLoading] = useState(false);
 	const [classResultLoading, setClassResultLoading] = useState(false);
-	const [runOnboarding, setRunOnboarding] = useState(false);
+	const [runOnboarding, setRunOnboarding] = useState(true);
 
 	useEffect(() => {
 		setRunOnboarding(true);
@@ -225,6 +226,7 @@ export default function Crop({setResultFunction}){
 					/>
 				</div>
 			}
+			<img src={bg_plus} className="background--plus"/>
 			<div className="second_page--container">
 				<div className='crop--view'>
 					<div className="image--container">

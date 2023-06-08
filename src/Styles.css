@@ -11,9 +11,8 @@
 }
 
 
-
+/* 
 nav {
-    background-color: #0D4C92;/*91d56*/
     display: flex;
     flex-direction: row;
     height: fit-content;
@@ -51,7 +50,6 @@ nav > ul > li{
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: x-large;
-    /* position: absolute; */
     position: relative;
     display: inline-block;
 }
@@ -71,8 +69,9 @@ nav > ul > li{
     line-height: 30px;
 
     color: #FFFFFF;
-}
+} */
 
+/* 
 .nav--Home {
     position: absolute;
     top: 4.5%;
@@ -81,7 +80,6 @@ nav > ul > li{
     border-radius: 17px;
     padding: 5px 7px 5px 7px;
     color: white;
-    /* top: 10%; */
     font-family: 'Poppins';
     margin: 0px 0px 0px 0px;
     font-size: 3vh;
@@ -94,7 +92,6 @@ nav > ul > li{
     border-radius: 17px;
     padding: 5px 7px 5px 7px;
     color: white;
-    /* top: 10%; */
     font-family: 'Poppins';
     margin: 0px 0px 0px 0px;
     font-size: 3vh;
@@ -107,13 +104,12 @@ nav > ul > li{
     border-radius: 17px;
     padding: 5px 7px 5px 7px;
     color: white;
-    /* top: 10%; */
     font-family: 'Poppins';
     margin: 0px 0px 0px 0px;
     font-size: 3vh;
-}
+} */
 
-.home--container{
+/* .home--container{
     margin-top: 30vh;
     margin-bottom: auto;
     display: contents;
@@ -127,12 +123,9 @@ nav > ul > li{
 .home--image{
     width: 200px;
     margin-top: 150px;
-    /* display: flex;
-    align-items: center; */
 }
 .home--text{
     font-family: "Cabin";
-    /* width: 40px; */
     margin: 0px 0px;
 }
 .hometocrop--button {
@@ -147,10 +140,10 @@ nav > ul > li{
 .hometocrop--button:hover {
     background-color: white;
     border: 5px solid #1598c0;
-}
+} */
 
 
-
+/* 
 .green_circle {
     position: absolute;
     width: 50vw;
@@ -179,7 +172,6 @@ nav > ul > li{
     position: absolute;
     width: 420px;
     height: 241px;
-    /* left: 938px; */
     right: 0%;
     top: 60%;
 
@@ -192,16 +184,19 @@ nav > ul > li{
     left: 50%;
     top: 53%;
 }
+*/
 
 .inbox {
     border: 2px solid rgb(15, 200, 15);
     border-radius: 25px;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 20px 0px 0px;
     position: relative;
     width: fit-content;
     height: fit-content;
 }
-
+.inbox > h2{
+    margin-left: 30px;
+}
 .home_content {
     display: flex;
     /* align-items: center; */
@@ -216,6 +211,7 @@ nav > ul > li{
     margin: 0px 0px 0px 0px;
     height: 40vh;
     width: 25vw;
+    z-index: 0;
 }
 
 .border2 {
@@ -225,6 +221,7 @@ nav > ul > li{
     margin: 0px 0px 0px 0px;
     height: 50vh;
     width: 25vw;
+    z-index: 0;
 }
 
 .border3 {
@@ -232,8 +229,9 @@ nav > ul > li{
     right: 0px;
     height: 20vh;
     width: 13vw;
-    top: 0%;
+    top: 8%;
     margin: 0px 0px 0px 0px;
+    z-index: 0;
 }
 
 .border4 {
@@ -243,17 +241,18 @@ nav > ul > li{
     width: 17vw;
     bottom: 0%;
     margin: 0px 0px 0px 0px;
+    z-index: 0;
 }
 
 .heading {
-    position: relative;
+    position: absolute;
     width:fit-content;
     height:fit-content;
     top: 25vh;
     border-radius: 25px;
     border: 2px solid rgb(15, 200, 15);
     padding: 1px 1px 1px 1px;
-    /* text-align: center; */
+    text-align: center;
 }
 
 .inbox > h1 {
@@ -312,7 +311,7 @@ nav > ul > li{
     font-size: smaller;
     text-align: center;
     /* /* left: 10%; */
-    top: 60%; }
+    top: 65%; }
 
 .home_text {
     font-family: 'Poppins';
@@ -322,7 +321,7 @@ nav > ul > li{
     top: 40%;
     color: #070000;
 }
-
+/* 
 .second_page {
     height: 100vh;
     background-color: #CFF5E7;
@@ -339,10 +338,8 @@ nav > ul > li{
 }
 .buttons-panel > button{
     margin: 3px;
-    /* background-color: #59C1BD; */
 }
 .buttons-panel{
-    /* background-color: blue; */
     display: flex;  
     flex-direction: column;
     width: 20lh;
@@ -365,7 +362,7 @@ nav > ul > li{
 
 canvas{
     display: none;
-}
+} */
 
 .page--about{
     background-color: #576CBC;
