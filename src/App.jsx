@@ -1,8 +1,8 @@
 import{ BrowserRouter, Route, Routes} from "react-router-dom";
-import Crop from './components/Crop';
-import Newhome from "./components/Newhome";
-import About from "./components/About";
-import Results from "./components/Results";
+import Crop from './components/Crop.jsx';
+import Newhome from "./components/Newhome.jsx";
+import About from "./components/About.jsx";
+import Results from "./components/Results.jsx";
 import './Styles.css';
 import { useEffect, useState } from "react";
 
@@ -19,6 +19,7 @@ function App() {
   },[result]);
 
   return (
+    // <Newhome />
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Newhome />} />

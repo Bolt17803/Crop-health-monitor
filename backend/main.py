@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import io
 from enum import Enum
-from pydantic import BaseModel
+# from pydantic import BaseModel
 import uvicorn
 from typing import List
 from segment_anything import sam_model_registry, SamPredictor
@@ -30,16 +30,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-class Input(BaseModel) :
-    x1: int
-    y1: int
-    x2: int
-    y2: int
-
-@app.post("/item/")
-async def coord(coord: Input):
-    return coord
 
 @app.get("/")
 async def root():

@@ -14,7 +14,7 @@ export default function Crop({setResultFunction}){
 
 	var fruitNameList = ["Apple","Blueberry","Cherry","Corn","Grape","Orange","Peach","Pepper","Potato","Raspberry","Soybean","Squash","Strawberry","Tomato"]
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
     const imageRef = useRef();
 	const rcImageRef = useRef();
@@ -124,6 +124,7 @@ export default function Crop({setResultFunction}){
 		formData.append("file",croppedImage,"testpic.png");
 		formData.append("data", JSON.stringify(cropData)); 
 
+		
 		const requestOptions={method: 'POST',body: formData,};
 
 		fetch("http://127.0.0.1:8000/upload/", requestOptions)
@@ -148,7 +149,7 @@ export default function Crop({setResultFunction}){
 			setDisease(Object.keys(JSON.parse(data.result)[0]));
 			setClassResultLoading(false);
 			setResultFunction(JSON.parse(data.result));
-			navigate("/Crop-health-monitor/Results");
+			// navigate("/Crop-health-monitor/Results");
 		})
 		.catch(error => console.error(error));
 	}
@@ -167,51 +168,51 @@ export default function Crop({setResultFunction}){
 		},"image/png",1);
 	}
 	
-	const steps = [
-		{
-		  element: '.btn--img',
-		  intro: 'Upload the image of the leaf',
-		  position: 'left',
-		  tooltipClass: 'myTooltipClass',
-		  highlightClass: 'myHighlightClass',
-		},
-		{
-		  element: '.crop--view',
-		  intro: 'Draw a bounding box aroung the leaf to be cropped.',
-		  position: 'right',
-		},
-		{
-		  element: '.btn--crop',
-		  intro: 'Submit the cropped image to be segmented from the background noise',
-		  position: 'left',
-		},
-		{
-		  element: '.radiobutton-container',
-		  intro: 'Select whether the image uploaded is of a Fruit or a Leaf.',
-		  position: 'left',
-		},
-		{
-		  element: '.fruit-dropdown',
-		  intro: 'Select the name of the plant.',
-		  position: 'left',
-		},
-		{
-		  element: '.btn--analyse',
-		  intro: 'Finally, click the analyze button to analyze the leaf\'s image.',
-		  position: 'left',
-		},
-	  ];
+	// const steps = [
+	// 	{
+	// 	  element: '.btn--img',
+	// 	  intro: 'Upload the image of the leaf',
+	// 	  position: 'left',
+	// 	  tooltipClass: 'myTooltipClass',
+	// 	  highlightClass: 'myHighlightClass',
+	// 	},
+	// 	{
+	// 	  element: '.crop--view',
+	// 	  intro: 'Draw a bounding box aroung the leaf to be cropped.',
+	// 	  position: 'right',
+	// 	},
+	// 	{
+	// 	  element: '.btn--crop',
+	// 	  intro: 'Submit the cropped image to be segmented from the background noise',
+	// 	  position: 'left',
+	// 	},
+	// 	{
+	// 	  element: '.radiobutton-container',
+	// 	  intro: 'Select whether the image uploaded is of a Fruit or a Leaf.',
+	// 	  position: 'left',
+	// 	},
+	// 	{
+	// 	  element: '.fruit-dropdown',
+	// 	  intro: 'Select the name of the plant.',
+	// 	  position: 'left',
+	// 	},
+	// 	{
+	// 	  element: '.btn--analyse',
+	// 	  intro: 'Finally, click the analyze button to analyze the leaf\'s image.',
+	// 	  position: 'left',
+	// 	},
+	//   ];
 
     return(
         <div className="second_page" id="crop">
-			<Steps
+			{/* <Steps
 				enabled={true}
 				steps={steps}
 				initialStep={0}
 				onExit={()=>{return true;}}
 				onComplete={()=>{return true;}}
 				options={{doneLabel:"Done!",exitOnEsc:true,showProgress:true}}
-			/>	
+			/>	 */}
 			<Navbar />
 			{ classResultLoading &&
 				<div className="pulseLoadingScreen">
