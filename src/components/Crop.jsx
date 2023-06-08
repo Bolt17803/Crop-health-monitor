@@ -31,7 +31,7 @@ export default function Crop({setResultFunction}){
 	const [disease, setDisease] = useState("");
 	const [segImgLoading, setSegImgLoading] = useState(false);
 	const [classResultLoading, setClassResultLoading] = useState(false);
-	const [runOnboarding, setRunOnboarding] = useState(false);
+	const [runOnboarding, setRunOnboarding] = useState(true);
 
 	useEffect(() => {
 		setRunOnboarding(true);
