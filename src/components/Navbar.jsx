@@ -53,9 +53,9 @@ export default function Navbar(){
                 <BurgerButton />
                 <div class="break"></div>
                 <ul className={navExpanded?"nav--menu expanded":"nav--menu"}>
-                    <li className="nav--Home">< Link to="/" className="analyze">Home</Link></li>
-                    <li className="nav--Analyze">< Link to="/Analyze" className="analyze">Analyze plant</Link></li>
-                    <li className="nav--About">< Link to="/About" className="analyze">About</Link></li>
+                    <li className="nav--Home">< Link to="/" className={navExpanded?"analyze expanded":"analyze"}>Home</Link></li>
+                    <li className="nav--Analyze">< Link to="/Analyze" className={navExpanded?"analyze expanded":"analyze"}>Analyze plant</Link></li>
+                    <li className="nav--About">< Link to="/About" className={navExpanded?"analyze expanded":"analyze"}>About</Link></li>
                 </ul>
         </nav>
     )

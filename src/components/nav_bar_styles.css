@@ -125,7 +125,7 @@
         background-color: white;
         border-top: 1px solid black;
         display: block;
-      }
+    }
     li .analyze {
         color: black;
         width: 100%;
@@ -145,10 +145,16 @@
         margin: 0 1rem;
     }
 
+    .analyze.expanded{
+        all: unset;
+        transition-duration: 0.05s;
+        color: black;
+    }
     .analyze{
         all: unset;
         transition-duration: 0.05s;
         color: black;
+        display: none;
     }
     .analyze:hover{
         color: green;
