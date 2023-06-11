@@ -127,7 +127,7 @@ export default function Crop({setResultFunction}){
 		
 		const requestOptions={method: 'POST',body: formData,};
 		console.log(requestOptions)
-		fetch("http://34.80.6.198:8000/upload/", requestOptions)
+		fetch("http://34.81.144.201:8000/upload/", requestOptions)
 		.then(response => response.json())
 		.then(data => {console.log("B64 image:"+data.result);setImage(data.result);setSegImgLoading(false);})
 		.catch(error => console.error(error));
@@ -142,7 +142,7 @@ export default function Crop({setResultFunction}){
 
 		const requestOptions={method: 'POST',body: newFormData,};
 
-		fetch("http://34.80.6.198:8000/upload_selection/", requestOptions)
+		fetch("http://34.81.144.201:8000/upload_selection/", requestOptions)
 		.then(response => response.json())
 		.then(data => {
 			console.log("Disease:"+Object.keys(JSON.parse(data.result)[0]));
