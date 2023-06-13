@@ -1,0 +1,78 @@
+.mob_home{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.mob_logo{
+    position: absolute;
+    width: 57px;
+    height: 66px;
+    left: 28px;
+    top: 10vw;
+    mix-blend-mode: lighten;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.navbar_button1{
+    position: absolute;
+    width: 115px;
+    height: 40px;
+    left: 45vw;
+    top: 11vw;
+    background: #D9D9D9;
+    mix-blend-mode: color-burn;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+.navbar_button2{
+    position: absolute;
+    width: 115px;
+    height: 40px;
+    left: 20vw;
+    top: 11vw;
+    background: #D9D9D9;
+    mix-blend-mode: color-burn;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+.navbar_text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 25px;
+    line-height: 38px;
+}
+.home_text{
+    box-sizing: border-box;
+    position: absolute;
+    width: 285px;
+    height: 141px;
+    left: 38px;
+    top: 30vh;
+    font-family: 'Actor';
+    font-style: normal;
+    /* font-weight:lighter; */
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: 100;
+    color: #2A533F;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.home_description{
+    position: absolute;
+    width: 345px;
+    height: 73px;
+    right: 17px;
+    top: 55vh;
+    left: 38px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 23px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+}
