@@ -5,7 +5,7 @@ import M_home from "./Mobile_home"
 
 export default function Home(){
     
-    const isMobile = useMediaQuery({ maxWidth: 767})
+    const isMobile = useMediaQuery({ maxWidth: 750})
 
     return(
         <div>
