@@ -57,11 +57,12 @@ async def recieveFile(file: bytes = File(...),data: str = Form(...)):
 
 @app.post("/upload_selection")
 async def recieveAnotherFile(file: bytes = File(...),data: str = Form(...)):
+    data = json.loads(data)
     print(data)
-    #img = Image.open(io.BytesIO(file))
-    #result=classifier.predict(img)
-    #print("result:",result)
-    return {"uploadStatus":"Complete","result":'[{"Corn_(maize)___healthy": 0.9528933763504028}, {"Pepper,_bell___Bacterial_spot": 0.018604278564453125}, {"Corn_(maize)___Common_rust_": 0.014313234016299248}, {"Pepper,_bell___healthy": 0.009599192067980766}]'}
+    img = Image.open(io.BytesIO(file))
+    result=classifier.predict(img,data)
+    print("result:",result)
+    return {"uploadStatus":"Complete","result":result}#'[{"Corn_(maize)___healthy": 0.9528933763504028}, {"Pepper,_bell___Bacterial_spot": 0.018604278564453125}, {"Corn_(maize)___Common_rust_": 0.014313234016299248}, {"Pepper,_bell___healthy": 0.009599192067980766}]'}
 
 @app.get("/")
 def root():

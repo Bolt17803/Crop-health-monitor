@@ -114,7 +114,7 @@ device = get_default_device()
 
 train = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy', 'Blueberry___healthy', 'Cherry_(including_sour)___Powdery_mildew', 'Cherry_(including_sour)___healthy', 'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)___Common_rust_', 'Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy', 'Grape___Black_rot', 'Grape___Esca_(Black_Measles)', 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)', 'Grape___healthy', 'Orange___Haunglongbing_(Citrus_greening)', 'Peach___Bacterial_spot', 'Peach___healthy', 'Pepper,_bell___Bacterial_spot', 'Pepper,_bell___healthy', 'Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy', 'Raspberry___healthy', 'Soybean___healthy', 'Squash___Powdery_mildew', 'Strawberry___Leaf_scorch', 'Strawberry___healthy', 'Tomato___Bacterial_spot', 'Tomato___Early_blight', 'Tomato___Late_blight', 'Tomato___Leaf_Mold', 'Tomato___Septoria_leaf_spot', 'Tomato___Spider_mites Two-spotted_spider_mite', 'Tomato___Target_Spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Tomato_mosaic_virus', 'Tomato___healthy']
 
-def predict_image(img, model):
+def predict_image(img, model, species):
     """Converts image to array and return the predicted class
         with highest probability"""
     # Convert to a batch of 1
@@ -124,11 +124,12 @@ def predict_image(img, model):
     #Applying softmax
     prob = F.softmax(yb,dim=1)
     # Pick index with highest probability
-    percentages, indices  = torch.topk(prob, 5, dim=1)
+    percentages, indices  = torch.topk(prob, 38, dim=1)
     # Retrieve the class label
     l = []
-    for i in range(4):
-        l.append({train[indices[0][i].item()]:percentages[0][i].item()})
+    for i in range(38):
+        if(species in train[indices[0][i].item()]):
+            l.append({train[indices[0][i].item()]:percentages[0][i].item()})
     
     stringified_list = json.dumps(l)
     print(stringified_list)
@@ -143,10 +144,63 @@ model.load_state_dict(torch.load("./models/plant-disease-model-v2(b8)-state_dict
 model.eval()
 model.to("cpu")
 
-def predict(image):
+grape_model = torch.load("./models/grape_googlenet.pth")
+grape_model.to(torch.device("cpu"))
+grape_model.eval()
+
+potato_model = torch.load("models/potato_googlenet.pth")
+potato_model.to(torch.device("cpu"))
+potato_model.eval()
+
+apple_model = torch.load("models/apple_rexnext50.pth")
+apple_model.to(torch.device("cpu"))
+apple_model.eval()
+
+def predict(image, data):
+    selection = data["Selection"]["selection"]
+    species = data["Species"]["species"]
+
     image = image.resize((256,256))
     image = image.convert('RGB')
     preprocess = transforms.Compose([transforms.ToTensor()])
     preprocessed_image = torch.unsqueeze(preprocess(image), 0)
     preprocessed_image.to(torch.device("cpu"))  #DIFF
-    return predict_image(preprocessed_image[0],model)
+
+    if(species == "Grape"):
+        y = grape_model(preprocessed_image)
+        prob = F.softmax(y,dim=1)
+        grape_classes = ['Grape___Black_rot', 'Grape___Esca_(Black_Measles)', 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)', 'Grape___healthy']
+        percentages, indices  = torch.topk(prob, 4, dim=1)
+        # Retrieve the class label
+        l = []
+        for i in range(4):
+            l.append({grape_classes[indices[0][i].item()]:percentages[0][i].item()})
+        stringified_list = json.dumps(l)
+        print(stringified_list)
+        return stringified_list
+    elif(species == "Apple"):
+        y = apple_model(preprocessed_image)
+        prob = F.softmax(y,dim=1)
+        apple_classes = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy']
+        percentages, indices  = torch.topk(prob, 4, dim=1)
+        # Retrieve the class label
+        l = []
+        for i in range(4):
+            l.append({apple_classes[indices[0][i].item()]:percentages[0][i].item()})
+        stringified_list = json.dumps(l)
+        print(stringified_list)
+        return stringified_list
+    elif(species == "Potato"):
+        y = potato_model(preprocessed_image)
+        prob = F.softmax(y,dim=1)
+        potato_classes = ['Potato___Early_blight','Potato___healthy','Potato___Late_blight']
+        percentages, indices  = torch.topk(prob, 3, dim=1)
+        # Retrieve the class label
+        l = []
+        for i in range(3):
+            l.append({potato_classes[indices[0][i].item()]:percentages[0][i].item()})
+        stringified_list = json.dumps(l)
+        print(stringified_list)
+        return stringified_list
+    else:
+        return predict_image(preprocessed_image[0], model, species)
