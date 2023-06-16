@@ -44,11 +44,12 @@ async def recieveFile(file: bytes = File(...),data: str = Form(...)):
     coords = [data["x1"],data["y1"],data["x2"],data["y2"]]
     print(coords)
     img_b64s,img_cv2 = segmentor.getMask64(file,coords)
-    color_coverted = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
-    pil_image = Image.fromarray(color_coverted)
-    pil_image = pil_image.crop((*coords,))
-    pil_image = pil_image.resize((256,256))
-    pil_image.save(f"./{coords}.png") #----> USE THIS IF YOU WANT TO MAKE A DATASET OF SEGMENTING IMAGES
+    # color_coverted = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
+    # pil_image = Image.fromarray(color_coverted)
+    # pil_image = pil_image.crop((*coords,))
+    # pil_image = pil_image.resize((256,256))
+    # pil_image.save(f"./{coords}.png") #----> USE THIS IF YOU WANT TO MAKE A DATASET OF SEGMENTING IMAGES
+    
     # buffered = BytesIO()
     # pil_image.save(buffered, format="JPEG")
     # img_str = str(base64.b64encode(buffered.getvalue()))[2:-1]
