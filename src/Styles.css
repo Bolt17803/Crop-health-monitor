@@ -310,15 +310,13 @@ nav > ul > li{
     height: 10vh;
     font-size: smaller;
     text-align: center;
-    /* /* left: 10%; */
-    top: 65%; }
+    top: 35%; 
+}
 
 .home_text {
     font-family: 'Poppins';
     font-style: normal;
-    font-size: 5vh;
-    left: 40%;
-    top: 40%;
+    font-size: small;
     color: #070000;
 }
 /* 
