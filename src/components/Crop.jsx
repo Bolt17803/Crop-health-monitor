@@ -142,7 +142,7 @@ export default function Crop({setResultFunction}){
 
 		const requestOptions={method: 'POST',body: newFormData,};
 
-		fetch("http://127.0.0.1:8000/upload_selection/", requestOptions) //34.80.6.198 -> Google Cloud Server || for local host see output logs of uvicorn main:app, it's mostly 127.0.0.1
+		fetch("http://127.0.0.1:8000/upload_selection/", requestOptions)	//34.80.6.198 -> Google Cloud Server || for local host see output logs of uvicorn main:app, it's mostly 127.0.0.1
 		.then(response => response.json())
 		.then(data => {
 			console.log("Disease:"+Object.keys(JSON.parse(data.result)[0]));
