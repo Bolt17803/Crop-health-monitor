@@ -127,7 +127,7 @@ def predict_image(img, model):
     percentages, indices  = torch.topk(prob, 5, dim=1)
     # Retrieve the class label
     l = []
-    for i in range(5):
+    for i in range(4):
         l.append({train[indices[0][i].item()]:percentages[0][i].item()})
     
     stringified_list = json.dumps(l)

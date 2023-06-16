@@ -51,21 +51,20 @@ async def recieveFile(file: bytes = File(...),data: str = Form(...)):
     pil_image = Image.fromarray(color_coverted)
     pil_image = pil_image.crop((*coords,))
     pil_image = pil_image.resize((256,256))
-    #pil_image.save(f"./{coords}.png") #----> USE THIS IF YOU WANT TO MAKE A DATASET OF SEGMENTING IMAGES
-    buffered = BytesIO()
-    pil_image.save(buffered, format="JPEG")
-    img_str = str(base64.b64encode(buffered.getvalue()))[2:-1]
-    print(img_str)
-    return {"uploadStatus":"Complete","result":"data:image/jpeg;base64,"+img_str}#img_b64s}#classifier.predict(image)}
+    pil_image.save(f"./{coords}.png") #----> USE THIS IF YOU WANT TO MAKE A DATASET OF SEGMENTING IMAGES
+    # buffered = BytesIO()
+    # pil_image.save(buffered, format="JPEG")
+    # img_str = str(base64.b64encode(buffered.getvalue()))[2:-1]
+    return {"uploadStatus":"Complete","result":"data:image/jpeg;base64,"+img_b64s}#classifier.predict(image)}
     
 
 @app.post("/upload_selection")
 async def recieveAnotherFile(file: bytes = File(...),data: str = Form(...)):
     print(data)
-    img = Image.open(io.BytesIO(file))
-    result=classifier.predict(img)
-    print("result:",result)
-    return {"uploadStatus":"Complete","result":result}
+    #img = Image.open(io.BytesIO(file))
+    #result=classifier.predict(img)
+    #print("result:",result)
+    return {"uploadStatus":"Complete","result":'[{"Corn_(maize)___healthy": 0.9528933763504028}, {"Pepper,_bell___Bacterial_spot": 0.018604278564453125}, {"Corn_(maize)___Common_rust_": 0.014313234016299248}, {"Pepper,_bell___healthy": 0.009599192067980766}]'}
 
 @app.get("/")
 def root():

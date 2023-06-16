@@ -6,7 +6,7 @@ from typing import List
 from PIL import Image
 import base64
 
-sam = sam_model_registry['vit_l'](checkpoint="C:/Users/Admin/Desktop/Project/Crop_Health_Monitor/sam_vit_l_0b3195.pth")
+sam = sam_model_registry['vit_l'](checkpoint="C:\\Models\\SAM\\sam_vit_l_0b3195.pth")
 predictor = SamPredictor(sam)
 
 # image = cv2.imread("t7.jpg")
