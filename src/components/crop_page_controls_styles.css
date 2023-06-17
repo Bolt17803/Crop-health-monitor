@@ -207,7 +207,7 @@ canvas{
   pointer-events: none;
   /* transition: background 300ms; */
   width: 40px;
-}
+} 
 .highlight {
   background: #0D4C92;
   border-radius: 50%;
