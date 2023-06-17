@@ -121,7 +121,7 @@ nav{
     }
     .nav--menu.expanded{
         position: absolute;
-        top: 44px;
+        top: 60px;
         left: 0px;
         flex-direction: column;
         width: 100%;
@@ -197,5 +197,15 @@ nav{
 @media screen and (max-width: 768px) {
     .nav--menu{
       /* display: none; */
+    }
+}
+@media screen and (max-width: 400px) and (min-width: 300px){
+    .nav--Logo{
+        font-size: large;
+    }
+}
+@media screen and (max-width: 300px) and (min-width:270px){
+    .nav--Logo{
+        font-size: 15px;
     }
 }

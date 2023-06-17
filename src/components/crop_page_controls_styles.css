@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600');
 
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 767px){
   .second_page {
     height: 90vh;
     background-color: white;
   }
-  .second_page--container{
+  .second_page--container{  
     margin-top: 0vh;
     margin: 0;
     padding-top: 10vh;
@@ -130,7 +130,7 @@ canvas{
   background-color: #cccccc;
   color: #666666;
 }
-@media (min-width: 768px) {
+@media (min-width: 767px) {
     .buttons-panel > button {
     padding: 10px 30px;
   }
@@ -273,7 +273,7 @@ canvas{
 
 
 /*RESPONSIVENESS*/
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
   .second_page {
     height: 150vh;
     background-color: white;
